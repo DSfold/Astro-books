@@ -1,0 +1,26 @@
+---
+interface Props {
+  bio: string;
+  image: string;
+  name: string;
+}
+
+const { image, bio, name } = Astro.props;
+---
+
+<div class=`relative shadow-xl 'bg-gray-50' mb-10`>
+  <section
+    class=`justify-center items-center md:items-start md:justify-start flex flex-col md:flex-row px-8`
+  >
+    <div
+      class=`relative flex flex-0.5 max-w-[15%] min-w-[150px] overflow-visible`
+    >
+      <img src={image} class="z-50" />
+    </div>
+
+    <article class=`relative flex-1 text-xs md:text-base z-20 px-8 pb-10`>
+      <h1 class="text-lg font-bold">{name}</h1>
+      <p>{bio}</p>
+    </article>
+  </section>
+</div>

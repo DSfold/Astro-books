@@ -1,0 +1,29 @@
+---
+interface Props {
+  isLeft?: boolean;
+  description: string;
+  image: string;
+  name: string;
+}
+
+const { isLeft, image, description, name } = Astro.props;
+---
+
+<div class="relative overflow-visible">
+  <section
+    class=`justify-center items-center md:items-start md:justify-start flex flex-col ${isLeft ? 'md:flex-row-reverse' : 'md:flex-row'} w-full px-8 bg-gradient-to-r ${ !isLeft ? 'from-purple-800 to-purple-500': 'from-gray-100 to-white'}`
+  >
+    <div
+      class=` relative flex max-w-[15%] ${isLeft ? 'border-l-4' : 'border-r-4'}  border-b-4 border-yellow-500 min-w-[150px] overflow-visible -top-10`
+    >
+      <img src={image} class="z-50 -top-5" />
+    </div>
+
+    <article
+      class=`flex-1 relative ${!isLeft ? 'text-white': 'text-black'}  text-xs md:text-base z-20 px-8 pb-10`
+    >
+      <h1 class="text-lg font-bold">{name}</h1>
+      <p>{description}</p>
+    </article>
+  </section>
+</div>

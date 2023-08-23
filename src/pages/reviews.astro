@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ReviewsInfo from "../components/ReviewsInfo.astro";
+import { reviews } from "../assets/data/reviews";
+---
+
+<Layout title="Books | Reviews">
+  <h1 class="flex justify-center items-center text-3xl font-bold pb-5">
+    Reviews:
+  </h1>
+  <section>
+    <ul>
+      {
+        reviews.map((el) => (
+          <li>
+            <ReviewsInfo
+              totalRatings={el.globalRatings}
+              bookTitle={el.name}
+              rating={el.rating}
+              reviews={el.totalReviews}
+              topReviews={el.topReviews}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

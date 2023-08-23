@@ -1,0 +1,51 @@
+---
+interface Props {
+  bookTitle: string;
+  topReviews: {
+    author: string;
+    title: string;
+    body: string;
+    date: string;
+  }[];
+  rating: number;
+  totalRatings: number;
+  reviews: number;
+}
+
+const { bookTitle, rating, totalRatings, reviews, topReviews } = Astro.props;
+---
+
+<section
+  class="flex h-full flex-col shadow-md justify-center align-middle bg-slate-50 w-full pt-10 space-y-5 mb-2 pb-5"
+>
+  <h1 class="flex justify-center align-middle font-bold text-md md:text-xl">
+    {bookTitle}
+  </h1>
+  <h2 class="flex justify-center align-middle">Top Reviews:</h2>
+  <ul class="grid grid-cols-1 md:grid-cols-3 gap-2">
+    {
+      topReviews.map((item) => (
+        <li>
+          <article class="flex h-full flex-col justify-between md:flex-row">
+            <div class="h-full pb-10 relative space-y-3 bg-gray-100 border shadow-sm border-gray-200 p-3 italic text-md md:text-lg">
+              <h4 class="italic text-yellow-700">{item.author}</h4>
+              <h2 class="font-semibold">{item.title}</h2>
+              <p>'{item.body}'</p>
+              <time class="text-gray-500 absolute italic opacity-75 flex items-end bottom-0 right-2 justify-end">
+                {item.date}
+              </time>
+            </div>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+
+  <ul
+    class="flex justify-center align-middle flex-row mt-5 font-bold text-md md:text-xl space-x-10"
+  >
+    <li><figure>Rating: {rating} / 5</figure></li>
+    <li><figure>Reviews: {reviews}</figure></li>
+    <li><figure>Total ratings: {totalRatings}</figure></li>
+  </ul>
+</section>

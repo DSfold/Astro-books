@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AuthorsInfo from "../components/AuthorsInfo.astro";
+import { authors } from "../assets/data/authors";
+---
+
+<Layout title="Books | Authors">
+  <div class="h-full">
+    <article class="mb-8">
+      <h1 class="text-xl font-bold px-8 mb-2">
+        Of course we have to include people behind such wonderfull creations
+      </h1>
+      <p class="py-5 shadow-lg bg-black text-white px-8 italic">
+        The world is at an age where influencers and role models are not
+        restricted to those who stand on a stage, own a company, or win medals.
+        They now also include those who vlog about their lives, blog about their
+        interests, own a podcast, create music from scratch at home and … write
+        stories for the world. Many of the influencers of this time receive a
+        lot of adoration, respect and love; and for book lovers, authors and the
+        worlds that they create are a home unlike any other.
+      </p>
+    </article>
+    <section>
+      <ul>
+        {
+          authors.map((el) => (
+            <li>
+              <AuthorsInfo image={el.image} bio={el.bio} name={el.name} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Layout>
